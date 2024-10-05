@@ -1,16 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Blog</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>My Articles</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
+<body class="d-flex flex-column min-vh-100">
+  <nav class="navbar navbar-expand-lg p-3 mb-2 bg-secondary text-white shadow-sm">
+    <div class="container-fluid">
+      <%= link_to "My Articles", articles_path, class: "navbar-brand text-light" %>
+        <ul class="navbar-nav p-2">
+          <li class="nav-item">
+            <%= link_to "Create an article", new_article_path, class: "nav-link text-light" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1 container mt-4">
     <%= yield %>
-  </body>
+  </main>
+
+  <footer class="bg-dark text-light text-center py-3">
+    <div class="container">
+      <p class="mb-0">© 2024 My Articles. All rights reserved.</p>
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <a href="#" class="text-light">Privacy Policy</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#" class="text-light">Terms of Service</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#" class="text-light">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
 </html>
