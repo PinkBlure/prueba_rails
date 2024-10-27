@@ -1,0 +1,29 @@
+!!! 5
+%html
+  %head
+    %title My Articles
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+  %body.d-flex.flex-column.min-vh-100
+    %nav.navbar.navbar-expand-lg.p-3.mb-2.bg-secondary.text-white.shadow-sm
+      .container-fluid
+        = link_to "My Articles", articles_path, class: "navbar-brand text-light"
+        %ul.navbar-nav.p-2
+          %li.nav-item
+            = link_to "Create an article", new_article_path, class: "nav-link text-light"
+
+    %main.flex-grow-1.container.mt-4
+      = yield
+
+    %footer.bg-dark.text-light.text-center.py-3
+      .container
+        %p.mb-0 © 2024 My Articles. All rights reserved.
+        %ul.list-inline
+          %li.list-inline-item
+            %a.text-light{ href: "#" } Privacy Policy
+          %li.list-inline-item
+            %a.text-light{ href: "#" } Terms of Service
+          %li.list-inline-item
+            %a.text-light{ href: "#" } Contact

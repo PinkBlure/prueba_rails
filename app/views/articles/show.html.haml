@@ -1,0 +1,18 @@
+%h1.mb-4= @article.title
+
+%p= @article.body
+.mb-2.mt-4
+  %h5 Actions
+  %ul.list-unstyled.d-flex.gap-2
+    %li
+      = link_to "Edit", edit_article_path(@article), class: "btn btn-warning d-inline"
+    %li
+      = link_to "Destroy", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger d-inline"
+
+%h2.mt-5 Comments
+.mb-3
+  = render @article.comments
+  
+%h2 Add a comment:
+.mb-4
+  = render "comments/form", article: @article

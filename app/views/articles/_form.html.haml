@@ -1,0 +1,16 @@
+= form_with model: article do |form|
+  .mb-4
+    = form.label :title, class: "form-label"
+    = form.text_field :title, class: "form-control"
+    - article.errors.full_messages_for(:title).each do |message|
+      .text-danger= message
+  .mb-4
+    = form.label :body, class: "form-label"
+    = form.text_area :body, class: "form-control", rows: 5
+    - article.errors.full_messages_for(:body).each do |message|
+      .text-danger= message
+  .mb-4
+    = form.label :status, class: "form-label"
+    = form.select :status, Visible::VALID_STATUSES, { selected: article.status || 'public' }, { class: "form-select" }
+  %div
+    = form.submit class: "btn btn-primary"

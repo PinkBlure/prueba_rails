@@ -1,0 +1,16 @@
+%h1 Articles
+
+Our blog has #{Article.public_count} articles and counting!
+
+.row.mt-4
+  - @articles.each do |article|
+    - unless article.archived?
+      .col-md-4
+        .card.mb-4.border.border-primary
+          .card-body
+            %h5.card-title
+              = link_to article.title, article
+            %p.card-text
+              = article.body
+              
+= link_to "New Article", new_article_path, class: "btn btn-primary"
